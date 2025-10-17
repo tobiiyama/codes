@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foxy Glam | Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Kalnia:wght@400;600&family=Kapakana&display=swap" rel="stylesheet">
+  <link rel = "shortcut icon" href = "img/favicon.ico"/>
+  <link rel = "icon" type = "image/png" sizes = "32x32" href = "images/" />
+  <link rel = "apple-touch-icon" sizes = "180x180" href = "images/apple-touch-icon.png"/>
+  <link rel = "icon" sizes = "192x192" href = "images/android-chrome-192.png"/>
+</head>
+<body>
+
+  <div class="page-top">
+    <button class="back-btn" onclick="history.back()" aria-label="Back">‹</button>
+    <div class="page-title">Delivery</div>
+  </div>
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html"><img src="images/logo.png" alt="Foxy Glam Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="checkout-page">
+    <section class="checkout-wrap">
+      <form class="checkout-form" onsubmit="event.preventDefault(); alert('Order placed (demo)');">
+        <div class="row two-cols">
+          <div class="input-box">
+            <label>First name</label>
+            <input type="text" required placeholder="First name">
+          </div>
+          <div class="input-box">
+            <label>Last name</label>
+            <input type="text" required placeholder="Last name">
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>Email</label>
+          <input type="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="input-box">
+          <label>Country / Region</label>
+          <input type="text" required placeholder="Philippines">
+        </div>
+
+        <div class="input-box">
+          <label>Street address</label>
+          <input type="text" required placeholder="House no., street, barangay">
+        </div>
+
+        <div class="row two-cols">
+          <div class="input-box">
+            <label>Postal code</label>
+            <input type="text" required placeholder="1234">
+          </div>
+          <div class="input-box">
+            <label>City</label>
+            <input type="text" required placeholder="City">
+          </div>
+        </div>
+
+        <div class="row two-cols">
+          <div class="input-box">
+            <label>Region</label>
+            <input type="text" required placeholder="Province / Region">
+          </div>
+          <div class="input-box">
+            <label>Phone</label>
+            <input type="tel" required placeholder="09xxxxxxxxx">
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>Shipping method</label>
+          <select required>
+            <option>Standard — 3–5 days</option>
+            <option>Express — 1–2 days</option>
+          </select>
+        </div>
+
+        <div class="pay-block">
+          <div class="pay-row">
+            <span>Subtotal</span><strong>₱250</strong>
+          </div>
+          <button class="btn-orange btn-full" type="submit">Place order</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Foxy Glam Copyright 2025. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
