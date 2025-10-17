@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amber Eyeshadow Palette | Foxy Glam</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="product.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Kalnia:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html"><img src="images/logo.png" alt="Foxy Glam Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="top-back">
+    <a href="products.html">← Back to Products</a>
+  </div>
+
+  <main class="product-detail">
+    <img src="images/eyeshadow.webp" alt="Amber Eyeshadow Palette" class="product-img">
+
+    <div class="product-info">
+      <h1>Amber Eyeshadow Palette</h1>
+      <p class="price">Php 350</p>
+      <p>Inspired by the golden hues of a fox’s fur and the glow of a sunset forest, the Amber Eyeshadow Palette brings warmth and allure to every look. Featuring a stunning mix of fiery oranges, soft golds, rich browns, and glowing ambers, this palette lets you create anything from a natural daytime shimmer to a bold, foxy glam.</p>
+      <p>Each shade is highly pigmented, velvety smooth, and easy to blend, giving your eyes that captivating sparkle that turns heads. Whether you’re chasing soft charm or fierce confidence, Amber is your go-to palette for a glow that’s both wild and elegant.</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+    </div>
+    <p>© Foxy Glam 2025. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+  const addToCartButton = document.querySelector('.buy-btn');
+
+  addToCartButton.addEventListener('click', () => {
+    const product = {
+      name: document.querySelector('.product-info h1').textContent,
+      price: document.querySelector('.price').textContent.replace('Php ', ''),
+      image: document.querySelector('.product-img').src
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${product.name} has been added to your cart!`);
+  });
+</script>
+</body>
+</html>
+
+</body>
+</html>
