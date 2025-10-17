@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clever Kiss Matte Lipstick | Foxy Glam</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="product.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Kalnia:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html"><img src="images/logo.png" alt="Foxy Glam Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="top-back">
+    <a href="products.html">← Back to Products</a>
+  </div>
+
+  <main class="product-detail">
+    <img src="images/lipstick.webp" alt="Clever Kiss Matte Lipstick" class="product-img">
+
+    <div class="product-info">
+      <h1>Clever Kiss Matte Lipstick</h1>
+      <p class="price">Php 230</p>
+      <p>Turn every glance into a moment with Clever Kiss Matte Lipstick, where confidence meets comfort. This long-lasting formula delivers rich, velvety color in a single swipe, leaving your lips smooth—not dry. Inspired by the clever charm of the fox, each shade tells a story—whether you’re going for a soft whisper or a daring statement.</p>
+      <p>Lightweight, creamy, and kiss-proof, Clever Kiss is your secret weapon for lips that speak volumes without saying a word</p>
+      <button class="buy-btn">Add to Cart</button>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+    </div>
+    <p>© Foxy Glam 2025. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+  const addToCartButton = document.querySelector('.buy-btn');
+
+  addToCartButton.addEventListener('click', () => {
+    const product = {
+      name: document.querySelector('.product-info h1').textContent,
+      price: document.querySelector('.price').textContent.replace('Php ', ''),
+      image: document.querySelector('.product-img').src
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${product.name} has been added to your cart!`);
+  });
+</script>
+</body>
+</html>
+
+</body>
+</html>
+
+
