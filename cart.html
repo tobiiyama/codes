@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foxy Glam | Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Kalnia:wght@400;600&family=Kapakana&display=swap" rel="stylesheet">
+  <link rel = "shortcut icon" href = "img/favicon.ico"/>
+  <link rel = "icon" type = "image/png" sizes = "32x32" href = "images/" />
+  <link rel = "apple-touch-icon" sizes = "180x180" href = "images/apple-touch-icon.png"/>
+  <link rel = "icon" sizes = "192x192" href = "images/android-chrome-192.png"/>
+</head>
+<body>
+
+  <div class="page-top">
+    <button class="back-btn" onclick="history.back()" aria-label="Back">‹</button>
+    <div class="page-title">Cart</div>
+  </div>
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html"><img src="images/logo.png" alt="Foxy Glam Logo" class="logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <section class="cart-wrap">
+      <div class="cart-items"></div>
+
+      <aside class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong id="subtotal">₱0</strong>
+        </div>
+        <div class="summary-note">Shipping and taxes calculated at checkout</div>
+        <a href="checkout.html" class="btn-orange btn-full">Checkout</a>
+        <button class="btn-transparent" onclick="location.href='products.html'">Continue Shopping</button>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+    </div>
+    <p>© Foxy Glam Copyright 2025. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const cartContainer = document.querySelector('.cart-items');
+    const subtotalElement = document.getElementById('subtotal');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartDisplay() {
+      cartContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        subtotalElement.textContent = '₱0';
+        return;
+      }
+
+      let subtotal = 0;
+      cart.forEach((item, index) => {
+        const itemElement = document.createElement('article');
+        itemElement.classList.add('cart-row');
+        itemElement.innerHTML = `
+          <img class="cart-thumb" src="${item.image}" alt="${item.name}">
+          <div class="cart-meta">
+            <div class="cart-name">${item.name}</div>
+            <div class="cart-variant">${item.variant || ''}</div>
+            <div class="cart-price">₱${item.price}</div>
+            <div class="qty-controls">
+              <button class="qty-btn" data-action="dec" data-index="${index}">−</button>
+              <input class="qty-input" type="number" value="${item.quantity || 1}" min="1" />
+              <button class="qty-btn" data-action="inc" data-index="${index}">+</button>
+            </div>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          </div>
+        `;
+        cartContainer.appendChild(itemElement);
+
+        subtotal += item.price * (item.quantity || 1);
+      });
+
+      subtotalElement.textContent = '₱' + subtotal.toFixed(2);
+
+      document.querySelectorAll('.qty-btn').forEach(button => {
+        button.addEventListener('click', e => {
+          const index = e.target.getAttribute('data-index');
+          const action = e.target.getAttribute('data-action');
+          if (action === 'inc') {
+            cart[index].quantity = (cart[index].quantity || 1) + 1;
+          } else if (action === 'dec' && cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartDisplay();
+        });
+      });
+
+      document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', e => {
+          const index = e.target.getAttribute('data-index');
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartDisplay();
+        });
+      });
+    }
+
+    updateCartDisplay();
+  </script>
+
+</body>
+</html>
+
